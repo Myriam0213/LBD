@@ -24,9 +24,22 @@ ADD CONSTRAINT p_fch_ck CHECK (proyectoFechaInicio<=to_date('2009-09-16','YYYY-M
 ALTER TABLE NombreC.Cliente
 ADD CONSTRAINT FK_nombreRestriccion FOREIGN KEY(nombreColumna1)
 REFERENCES nombreEsquema.otraTabla (nombreColumna1)
+                                                            
+ALTER TABLE NombreC.Cliente
+ADD CONSTRAINT FK_nombreRestriccion FOREIGN KEY(nombreColumna1)
+REFERENCES nombreEsquema.otraTabla (nombreColumna1
 
-
-
+ALTER TABLE NombreC.Cliente
+ADD CONSTRAINT FK_nombreRestriccion FOREIGN KEY(nombreColumna1)
+REFERENCES nombreEsquema.otraTabla (nombreColumna1)
+                                    
+ALTER TABLE NombreC.Cliente
+ADD CONSTRAINT FK_nombreRestriccion FOREIGN KEY(nombreColumna1)
+REFERENCES nombreEsquema.otraTabla (nombreColumna1)
+                                    
+ALTER TABLE NombreC.Cliente
+ADD CONSTRAINT FK_nombreRestriccion FOREIGN KEY(nombreColumna1)
+REFERENCES nombreEsquema.otraTabla (nombreColumna1)
 
 
 
