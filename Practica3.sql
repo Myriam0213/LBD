@@ -1,7 +1,11 @@
 create database AdoptaPets
 use AdoptaPets
 
+ALTER AUTHORIZATION ON DATABASE::AdoptaPets TO sa
+GO
+
 --Tabla Persona
+drop table Persona
 
 create table Persona( 
 	Persona_id int not null,
@@ -9,14 +13,14 @@ create table Persona(
 	Edad_p TINYINT CHECK (Edad_p>18) not null,
 	Telefono_p bigint not null,
 	Correo_p VARCHAR(100) unique,
-	INE bit not null CHECK(Si tiene INE=1 or No tiene INE=0),
+	INE bit not null CHECK('SI TIENE INE'=1 or 'NO TIENE INE'=0),
 	ComprobanteDomicilio bit not null,
 
 	constraint pk_pi primary key(Persona_id),
-	--constraint pk_Np primary key(Nom_p)
 )
 
 --Tabla Mascota
+drop table Mascota
 
 create table Mascota( 
 	Mascota_id int not null,
@@ -30,21 +34,21 @@ create table Mascota(
 
 --Tabla ContratoAdopcion
 
+drop table ContratoAdopcion
 create table ContratoAdopcion( 
 	ContratoAdopcion_id int not null,
 	Persona_id2 int not null,
 	Mascota_id2 int not null,
-	Nom_p2 varchar(150) not null,
 	CostoCubrir float not null,
 	FechaAdopcion date not null,
 	
 	constraint pk_CAi primary key(ContratoAdopcion_id),
 	constraint fk_Pi2 foreign key(Persona_id2) references Persona(Persona_id),
 	constraint fk_Mi2 foreign key(Mascota_id2) references Mascota(Mascota_id),
-	--constraint fk_Np2 foreign key(Nom_p2) references Persona(Nom_p)
 )
 
 --Tabla CartillaVacunacion
+drop table CartillaVacunacion
 
 create table CartillaVacunacion( 
 	CartillaVacunacion_id int not null,
@@ -60,6 +64,7 @@ create table CartillaVacunacion(
 )
 
 --Tabla EntregaDeMascota
+drop table EntregaDeMascota
 
 create table EntregaDeMascota(
 	EntregaDeMascota_id int not null,
