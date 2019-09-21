@@ -1,54 +1,63 @@
-create database RestauranteRain
-GO
-use RestauranteRain 
-drop table Clientes
-GO
+create database AdoptaPets
+use AdoptaPets
 
-create table Clientes(
-NUmeroCliente int Not null primary key,
-Nombre varchar(255) Not null,
-PrimerApellido varchar(255) Not null,
-SegundoApellido varchar(255) null,
-NombreCompleto as (Nombre + '' + PrimerApellido + '' + SegundoApellido + ''),
-TipoDeCliente nvarchar(50) Not null
-)
-GO
+--Tabla Persona
 
-create table Ticket(
-IdRestaurante int not null primary key,
-DireccionRestaurante int not null,
-FechaYHoraDeEntrega datetime not null,
-
-NombreCliente int Not null,
-FechaDeEntrega varchar(255) Not null,
-NumeroDePedido varchar(255) Not null,
-
-PedidosOrdenados smallint not null,
-TotalDePedidos varchar(100) not null,
-)
-GO
-
-create table Pedido(
-precio int not null primary key,
-pagado varchar(150) not null,
-confirmacion varchar(150) not null,
-servicio nvarchar(150)not null
+create table Persona( 
+	Persona_id int,
+	Nom_p varchar(150),
+	Edad_p TINYINT,
+	Telefono_p bigint,
+	Correo_p VARCHAR(100),
+	INE bit,
+	ComprobanteDomicilio bit,
 )
 
-create table Menu(
-ProductosMenu varchar(100) not null primary key,
-PrecioProductos varchar(100)not null
+--Tabla Mascota
+
+create table Mascota( 
+	Mascota_id int,
+	Años tinyint,
+	Raza varchar(80),
+	Color varchar(30),
+	Tamaño varchar(30), 
 )
 
-create table Mesa(
-NumeroMesa varchar(100) not null primary key
+--Tabla ContratoAdopcion
+
+create table ContratoAdopcion( 
+	ContratoAdopcion_id int,
+	Persona_id2 int,
+	Mascota_id2 int,
+	Nom_p2 varchar(150),
+	CostoCubrir float,
+	FechaAdopcion date,
 )
 
-Select * from Clientes,Ticket,Pedido,Menu,Mesa
+--Tabla CartillaVacunacion
+
+create table CartillaVacunacion( 
+	CartillaVacunacion_id int,
+	Persona_id3 int,
+	Mascota_id3 int,
+	Vacunas varchar(250),
+	CostoVacunas float,
+	FechaVacunas date,
+)
+
+--Tabla EntregaDeMascota
+
+create table EntregaDeMascota(
+	EntregaDeMascota_id int,
+	Mascota_id4 int,
+	Persona_id4 int,
+	CartillaVacunacion_id2 int,
+	ContratoAdopcion_id2 int,
+)
 
 
-Create Index
-INDX_Clientes_NombreCompleto on Clientes(NombreCompleto)
-
-Create Index 
-INDX_CLientes_TipoDeCliente on Clientes(TipoDeCliente)
+select * from Persona
+select * from Mascota 
+select * from EntregaDeMascota
+select * from ContratoAdopcion
+select * from CartillaVacunacion
