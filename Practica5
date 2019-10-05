@@ -44,7 +44,7 @@ create table IdentidadMascota(
 	Localidad varchar(200),
 	Edad int,
 	Genero varchar(10),
-	Tamaño int,
+	TamaÃ±o int,
 	Vacunacion bit,
 	constraint pk_IM primary key(IdentidadMascota_id)
 )
