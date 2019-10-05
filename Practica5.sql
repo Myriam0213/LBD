@@ -50,3 +50,16 @@ create table IdentidadMascota(
 )
 
 --
+
+--Tabla Adoptar Mascotas (Con una clave foranea)
+create table AdoptaMAscotas(
+	AdoptaMascotas_id int,
+	TipoMascota_AM varchar (100),
+	Raza_AM(100),
+	Localidad_MA (200),
+	
+)
+
+
+
+
