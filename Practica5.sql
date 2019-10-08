@@ -13,6 +13,8 @@ create table Adoptante(
 	constraint pk_Ai primary key(Adoptante_id)
 )
 
+GO
+
 --Tabla Rescatista
 create table Rescatista(
 	Rescatista_id int,
@@ -35,11 +37,13 @@ create table Domicilio(
 	constraint pk_Di primary key(Domicilio_id)
 )*//
 
+GO
+
 --Tabla Identidad Mascota
 create table IdentidadMascota(
 	IdentidadMascota_id int,
 	Nombre_IM varchar(150),
-	Especie_IM varchar(100),
+	TipoMascota_IM varchar(100),
 	Raza_IM varchar(100),
 	Localidad varchar(200),
 	Edad int,
@@ -49,16 +53,49 @@ create table IdentidadMascota(
 	constraint pk_IM primary key(IdentidadMascota_id)
 )
 
---
+GO
+
+--Tabla Centro De Servicio
+create table CentroDeServicio(
+	CentroDeServicio_id int,
+	NombreDelEstablecimiento varchar(150),
+	LocalidadServicio varchar(200),
+	constraint pk_CDS primary key(CentroDeServicio_id)
+)
+
+GO
+
 
 --Tabla Adoptar Mascotas (Con una clave foranea)
 create table AdoptaMAscotas(
 	AdoptaMascotas_id int,
 	TipoMascota_AM varchar (100),
 	Raza_AM(100),
-	Localidad_MA (200),
+	Localidad_AM (200),
+	constraint pk_AM primary key(AdoptaMascotas_id),
+	constraint fk_TM foreign key(TipoMascota_MA) references IdentidadMascotas(TipoMascota_IM)
 	
 )
+
+GO
+
+--Tabla Contrato Adopcion (Con muchas claves foraneas)
+create table ContratoAdopcion(
+	ContratoAdopcion_id int,
+	FechaAdopcion_CA datatime,
+	CentroDeServicio_id1 int,
+	Adoptante_id1 int,
+	Rescatista_id1 int,
+	Mascota_id1 int,
+	Costo_CA money,
+	constraint pk_CA primary key(ContratoAdopcion_id),
+	constraint fk_Cs foreign key(CentroDeServicio_id1) references CentroDeServicio(CentroDeServicio_id),
+	constraint fk_Ado foreign key(Adoptante_id1) references Adoptante(Adoptante_id),
+	constraint fk_Res foreign key(Rescatista_id1) references Rescatista(Rescatista_id),
+	constraint fk_Mas foreign key(Mascota_id1) references Mascota(Mascota_id)
+)
+
+GO
 
 
 
