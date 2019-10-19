@@ -1,6 +1,9 @@
 create database Adopta
 use Adopta
+ALTER AUTHORIZATION ON DATABASE::Adopta TO sa
+GO
 
+drop table Adoptante
 --Tabla Adoptante
 create table Adoptante(
 	Adoptante_id int,
@@ -15,7 +18,7 @@ create table Adoptante(
 
 GO
 
-
+drop table Rescatista
 --Tabla Rescatista
 create table Rescatista(
 	Rescatista_id int,
@@ -32,6 +35,8 @@ GO
 
 
 /**Tabla de Domicilio
+drop table Domicilio
+
 create table Domicilio(
 	Domicilio_id uniqueidentifier,
 	Pais varchar(100),
@@ -42,7 +47,7 @@ create table Domicilio(
 )*/
 
 
-
+drop table IdentidadMascota
 /**Tabla Identidad Mascota*/
 create table IdentidadMascota(
 	IdentidadMascota_id int,
@@ -59,7 +64,7 @@ create table IdentidadMascota(
 
 GO
 
-
+drop table CentroDeServicio
 --Tabla Centro De Servicio
 create table CentroDeServicio(
 	CentroDeServicio_id int,
@@ -70,19 +75,22 @@ create table CentroDeServicio(
 
 GO
 
-
+drop table AdoptaMascotas
 --Tabla Adoptar Mascotas (Con una clave foranea)
 create table AdoptaMascotas(
 	AdoptaMascotas_id int,
 	TipoMascota_AM varchar (100),
 	Raza_AM varchar(100),
 	Localidad_AM varchar(200),
-	constraint pk_AM primary key(AdoptaMascotas_id)	
+	IdentidadMascota_id1 int,
+	constraint pk_AM primary key(AdoptaMascotas_id),
+	constraint fk_M foreign key(IdentidadMascota_id1) references IdentidadMascota(IdentidadMascota_id)	
 )
 
 GO
 
 
+drop table ContratoAdopcion
 --Tabla Contrato Adopcion (Con muchas claves foraneas)
 create table ContratoAdopcion(
 	ContratoAdopcion_id int,
