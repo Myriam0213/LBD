@@ -15,6 +15,8 @@ create table Adoptante(
 
 GO
 
+
+
 --Tabla Rescatista
 create table Rescatista(
 	Rescatista_id int,
@@ -27,7 +29,9 @@ create table Rescatista(
 	constraint pk_Ri primary key(Rescatista_id)
 )
 
-//*Tabla de Domicilio
+GO
+
+/**Tabla de Domicilio
 create table Domicilio(
 	Domicilio_id uniqueidentifier,
 	Pais varchar(100),
@@ -35,11 +39,12 @@ create table Domicilio(
 	Ciudad varchar(100),
 	Municipio varchar(100),
 	constraint pk_Di primary key(Domicilio_id)
-)*//
+)*/
 
-GO
 
---Tabla Identidad Mascota
+
+
+//Tabla Identidad Mascota
 create table IdentidadMascota(
 	IdentidadMascota_id int,
 	Nombre_IM varchar(150),
@@ -55,6 +60,8 @@ create table IdentidadMascota(
 
 GO
 
+
+
 --Tabla Centro De Servicio
 create table CentroDeServicio(
 	CentroDeServicio_id int,
@@ -66,37 +73,36 @@ create table CentroDeServicio(
 GO
 
 
+
+
 --Tabla Adoptar Mascotas (Con una clave foranea)
-create table AdoptaMAscotas(
+create table AdoptaMascotas(
 	AdoptaMascotas_id int,
 	TipoMascota_AM varchar (100),
-	Raza_AM(100),
-	Localidad_AM (200),
-	constraint pk_AM primary key(AdoptaMascotas_id),
-	constraint fk_TM foreign key(TipoMascota_MA) references IdentidadMascotas(TipoMascota_IM)
-	
+	Raza_AM varchar(100),
+	Localidad_AM varchar(200),
+	constraint pk_AM primary key(AdoptaMascotas_id)	
 )
 
 GO
 
+
+
 --Tabla Contrato Adopcion (Con muchas claves foraneas)
 create table ContratoAdopcion(
 	ContratoAdopcion_id int,
-	FechaAdopcion_CA datatime,
+	FechaAdopcion_CA datetime,
 	CentroDeServicio_id1 int,
 	Adoptante_id1 int,
 	Rescatista_id1 int,
-	Mascota_id1 int,
+	IdentidadMascota_id1 int,
 	Costo_CA money,
 	constraint pk_CA primary key(ContratoAdopcion_id),
 	constraint fk_Cs foreign key(CentroDeServicio_id1) references CentroDeServicio(CentroDeServicio_id),
 	constraint fk_Ado foreign key(Adoptante_id1) references Adoptante(Adoptante_id),
 	constraint fk_Res foreign key(Rescatista_id1) references Rescatista(Rescatista_id),
-	constraint fk_Mas foreign key(Mascota_id1) references Mascota(Mascota_id)
+	constraint fk_Mas foreign key(IdentidadMascota_id1) references IdentidadMascota(IdentidadMascota_id)
 )
 
 GO
-
-
-
 
