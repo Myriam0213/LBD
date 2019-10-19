@@ -16,7 +16,6 @@ create table Adoptante(
 GO
 
 
-
 --Tabla Rescatista
 create table Rescatista(
 	Rescatista_id int,
@@ -31,6 +30,7 @@ create table Rescatista(
 
 GO
 
+
 /**Tabla de Domicilio
 create table Domicilio(
 	Domicilio_id uniqueidentifier,
@@ -43,8 +43,7 @@ create table Domicilio(
 
 
 
-
-//Tabla Identidad Mascota
+/**Tabla Identidad Mascota*/
 create table IdentidadMascota(
 	IdentidadMascota_id int,
 	Nombre_IM varchar(150),
@@ -61,7 +60,6 @@ create table IdentidadMascota(
 GO
 
 
-
 --Tabla Centro De Servicio
 create table CentroDeServicio(
 	CentroDeServicio_id int,
@@ -71,8 +69,6 @@ create table CentroDeServicio(
 )
 
 GO
-
-
 
 
 --Tabla Adoptar Mascotas (Con una clave foranea)
@@ -85,7 +81,6 @@ create table AdoptaMascotas(
 )
 
 GO
-
 
 
 --Tabla Contrato Adopcion (Con muchas claves foraneas)
